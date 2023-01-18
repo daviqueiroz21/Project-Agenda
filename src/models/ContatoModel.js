@@ -23,6 +23,10 @@ Contato.prototype.register = async function(){
   this.contato = await ContatoModel.create(this.body);
 }
 
+Contato.buscaPorId = async function(id){
+  const user = await ContatoModel.findById(id);
+  return user;
+}
 
 Contato.prototype.valida = function(){
   this.cleanUp();
