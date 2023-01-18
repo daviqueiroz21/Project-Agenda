@@ -49,7 +49,7 @@ class Login {
 
   }
   
-  valida = ()=>{
+  valida() {
     this.cleanUp();
 
     if(!validator.isEmail(this.body.email)) this.errors.push('Email inválido');
