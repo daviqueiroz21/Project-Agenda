@@ -28,6 +28,18 @@ Contato.buscaPorId = async function(id){
   return user;
 }
 
+Contato.bucaContatos = async () => {
+  const contatos = await ContatoModel.find()
+    .sort({criadoEm: -1});
+  return contatos;
+}
+
+Contato.delete = async (id) => {
+  if(typeof id !== 'string') return;
+  const contato = await ContatoModel.findOneAndDelete({_id: id})
+  return contato;
+}
+
 Contato.prototype.valida = function(){
   this.cleanUp();
   

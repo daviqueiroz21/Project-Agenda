@@ -62,3 +62,15 @@ exports.editIndex = async function (req, res){
  
   return res.render('contato',{contato});
 }
+
+exports.delete = async (req,res)=>{
+  if(!req.params.id) return res.render('404');
+  if(typeof req.params.id !== 'string') return ;
+  
+  const contato = await Contato.delete(req.params.id)
+  if(!contato)return res.render('404');
+ 
+  req.flash('success', 'Constato Apagado com sucesso com sucesso');
+  req.session.save(()=> res.redirect('/'));
+  return;
+}
